@@ -11,5 +11,7 @@ private:
 public:
     void insert(string from, string to);
     void check();
+    void parseInput(string input);
+    string getStringRepresentation();
     void pageRank(int p);
 };

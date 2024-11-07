@@ -48,16 +48,19 @@ TEST_CASE("Test 2", "[tag]") {
 TEST_CASE("Example PageRank Output Test", "[flag]") {
   // the following is a "raw string" - you can write the exact input (without
   //   any indentation!) and it should work as expected
-  string input = R"(7 2
+  string input = R"(
+7 2
 google.com gmail.com
 google.com maps.com
 facebook.com ufl.edu
 ufl.edu google.com
 ufl.edu gmail.com
 maps.com facebook.com
-gmail.com maps.com)";
+gmail.com maps.com
+)";
 
-  string expectedOutput = R"(facebook.com 0.20
+  string expectedOutput = R"(
+facebook.com 0.20
 gmail.com 0.20
 google.com 0.10
 maps.com 0.30
@@ -68,9 +71,9 @@ ufl.edu 0.20
 
   // somehow pass your input into your AdjacencyList and parse it to call the
   // correct functions, for example:
-  //  AdjacencyList g;
-  //  g.parseInput(input)
-  //  actualOutput = g.getStringRepresentation()
+  AdjacencyList g;
+  g.parseInput(input);
+  actualOutput = g.getStringRepresentation();
 
   REQUIRE(actualOutput == expectedOutput);
 }
