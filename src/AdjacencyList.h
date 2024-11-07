@@ -49,7 +49,7 @@ string AdjacencyList::getStringRepresentation() {
     ostringstream output;
 
     for (auto& node : this->graph) {
-        output << node.first << " " << fixed << setprecision(2) << node.second.second << end;;
+        output << node.first << " " << fixed << setprecision(2) << node.second.second << endl;
     }
 
     return output.str();
