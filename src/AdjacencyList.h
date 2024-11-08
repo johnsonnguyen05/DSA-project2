@@ -2,6 +2,10 @@
 #include <iomanip>
 #include <sstream>
 
+map<string, pair<vector<pair<string, float>>, float>> AdjacencyList::getGraph() {
+    return this->graph;
+}
+
 void AdjacencyList::insert(string from, string to) {
     if (this->graph.find(from) == this->graph.end()) { //insertion from and to
         this->graph[from] = {{}, 1}; //initalize empty neighbors with temp outdegree value
@@ -22,37 +26,6 @@ void AdjacencyList::check() { //display data
         }
         cout << node.second.second << "} " <<endl;
     }
-}
-
-void AdjacencyList::parseInput(string input) {
-    istringstream inputStream(input);
-    string line;
-
-    int num_of_iterations, power_iterations;
-    getline(inputStream, line);
-    istringstream firstLineStream(line);
-    firstLineStream >> num_of_iterations >> power_iterations;
-
-    while (getline(inputStream, line)) {
-        istringstream lineStream(line);
-        string from, to;
-
-        lineStream >> from >> to;
-
-        this->insert(from, to);
-    }
-
-    pageRank(power_iterations);
-}
-
-string AdjacencyList::getStringRepresentation() {
-    ostringstream output;
-
-    for (auto& node : this->graph) {
-        output << node.first << " " << fixed << setprecision(2) << node.second.second << endl;
-    }
-
-    return output.str();
 }
 
 void AdjacencyList::pageRank(int p) {
