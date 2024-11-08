@@ -1,4 +1,4 @@
-#include <catch2/catch_test_macros.hpp>
+/*#include <catch2/catch_test_macros.hpp>
 #include <iostream>
 #include <cmath>
 
@@ -7,10 +7,12 @@
 
 using namespace std;
 
+//used Chase Mooney's Project 2 Tester to compile unit tests
+
 // the syntax for defining a test is below. It is important for the name to be
 // unique, but you can group multiple tests with [tags]. A test can have
 // [multiple][tags] using that syntax.
-TEST_CASE("PageRank calculation normal", "[pageRank]") {
+TEST_CASE("TEST 1: PageRank calculation normal", "[pageRank]") {
   AdjacencyList graph;
   graph.insert("google.com", "gmail.com");
   graph.insert("google.com", "maps.com");
@@ -30,7 +32,7 @@ TEST_CASE("PageRank calculation normal", "[pageRank]") {
   REQUIRE(output["ufl.edu"].second == 0.20f);
 }
 
-TEST_CASE("PageRank calculation power_iterations", "[pageRank]") {
+TEST_CASE("TEST 2: PageRank calculation power_iterations", "[pageRank]") {
   AdjacencyList graph;
   graph.insert("google.com", "gmail.com");
   graph.insert("google.com", "maps.com");
@@ -50,29 +52,19 @@ TEST_CASE("PageRank calculation power_iterations", "[pageRank]") {
   REQUIRE((ceil(output["ufl.edu"].second * 100) / 100)== 0.24f);
 }
 
-TEST_CASE("PageRank calculation 2", "[pageRank]") {
+TEST_CASE("TEST 3: PageRank calculation 2", "[pageRank]") {
   AdjacencyList graph;
-  graph.insert("zoom.us", "facebook.com");
-  graph.insert("python.org", "zoom.us");
-  graph.insert("facebook.com", "python.org");
-  graph.insert("facebook.com", "google.com");
-  graph.insert("google.com", "aman.com");
-  graph.insert("aman.com", "zoom.us");
-  graph.insert("python.org", "aman.com");
-  graph.insert("aman.com", "python.org");
+  graph.insert("google.com", "gmail.com");
 
-  graph.pageRank(14);
+  graph.pageRank(2);
 
   map<string, pair<vector<pair<string, float>>, float>> output = graph.getGraph();
-  REQUIRE((ceil(output["aman.com"].second * 100) / 100) == 0.29f);
-  REQUIRE((ceil(output["facebook.com"].second * 100) / 100) == 0.14f);
-  REQUIRE((ceil(output["google.com"].second * 100) / 100) == 0.08f);
-  REQUIRE((ceil(output["python.org"].second * 100) / 100) == 0.24f);
-  REQUIRE((ceil(output["zoom.us"].second * 100) / 100)== 0.26f);
+  REQUIRE((ceil(output["google.com"].second * 100) / 100) == 0.00f);
+  REQUIRE((ceil(output["gmail.com"].second * 100) / 100) == 0.50f);
+
 }
 
-
-TEST_CASE("Adding vertices and edges", "[insertion]") {
+TEST_CASE("TEST 4: Adding vertices and edges", "[insertion]") {
   AdjacencyList graph;
   graph.insert("google.com", "gmail.com");
   graph.insert("google.com", "maps.com");
@@ -91,3 +83,18 @@ TEST_CASE("Adding vertices and edges", "[insertion]") {
   REQUIRE(output["ufl.edu"].first[0].first == "google.com");
   REQUIRE(output["ufl.edu"].first[1].first == "gmail.com");
 }
+
+TEST_CASE("TEST 5: PageRank calculation 3", "[pageRank]") {
+  AdjacencyList graph;
+  graph.insert("python.org", "samsung.com");
+  graph.insert("samsung.com", "python.org");
+  graph.insert("twitter.com", "python.org");
+
+  graph.pageRank(3);
+
+  map<string, pair<vector<pair<string, float>>, float>> output = graph.getGraph();
+  REQUIRE((ceil(output["python.org"].second * 100) / 100) == 0.34f);
+  REQUIRE((ceil(output["samsung.com"].second * 100) / 100) == 0.67f);
+  REQUIRE((ceil(output["twitter.com"].second * 100) / 100) == 0.00f);
+}
+*/

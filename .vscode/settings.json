@@ -2,6 +2,8 @@
     "files.associations": {
         "iomanip": "cpp",
         "map": "cpp",
-        "format": "cpp"
+        "format": "cpp",
+        "cmath": "cpp",
+        "vector": "cpp"
     }
 }
